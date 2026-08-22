@@ -4,9 +4,15 @@
   inputs = {
     # Core NixOS repository (Tracking version 26.05)
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
+
+    # Add Home Manager input
+    home-manager= {
+        url = "github:nix-community/home-manager";
+        inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs }: {
+  outputs = { self, nixpkgs, home-manager }: {
     nixosConfigurations = {
       # "nixos" is the hostname. This must match the hostName in configuration.nix
       nixos = nixpkgs.lib.nixosSystem {
@@ -17,6 +23,14 @@
           
           # Main system configuration
           ./configuration.nix
+
+          # Intergrate Home Manager as a module
+          home-manager.nixosModules.home-manager
+          {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.lmtot27 = import ./home.nix;
+          }
         ];
       };
     };

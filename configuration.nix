@@ -2,14 +2,14 @@
 
 {
   # ==========================================
-  # 1. HARDWARE & IMPORTS
+  # HARDWARE & IMPORTS
   # ==========================================
   imports = [
     ./hardware-configuration.nix
   ];
 
   # ==========================================
-  # 2. NIX CORE SETTINGS
+  # NIX CORE SETTINGS
   # ==========================================
   # Enable Flakes and the new command-line tool
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -21,7 +21,7 @@
   system.stateVersion = "26.05"; 
 
   # ==========================================
-  # 3. BOOTLOADER & KERNEL
+  # BOOTLOADER & KERNEL
   # ==========================================
   boot.loader = {
     systemd-boot.enable = false;
@@ -38,7 +38,7 @@
   boot.initrd.kernelModules = [ "amdgpu" ];
 
   # ==========================================
-  # 4. NETWORKING & TIME
+  # NETWORKING & TIME
   # ==========================================
   networking = {
     hostName = "nixos";
@@ -48,7 +48,7 @@
   time.timeZone = "Asia/Ho_Chi_Minh";
 
   # ==========================================
-  # 5. USER ACCOUNTS
+  # USER ACCOUNTS
   # ==========================================
   users.users."lmtot27" = {
     isNormalUser = true;
@@ -58,10 +58,15 @@
   };
 
   # ==========================================
-  # 6. SYSTEM PACKAGES
+  # SYSTEM PACKAGES
   # ==========================================
   environment.systemPackages = with pkgs; [
     git
     neovim
   ];
+
+  # ==========================================
+  # WAYLAND COMPOSITOR 
+  # ==========================================
+  programs.niri.enable = true;
 }
