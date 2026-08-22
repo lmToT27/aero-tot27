@@ -9,10 +9,6 @@
     # ============================================
     # SYSTEM PACKAGES
     # ============================================ 
-    nixpkgs.config = {
-        allowUnfree = true;
-    };
-
     home.packages = with pkgs; [
         # UI & Terminal utils
         kitty waybar rofi swaybg swaynotificationcenter
@@ -55,12 +51,6 @@
             cls = "clear";
             rebuild-os = "sudo nixos-rebuild switch --flake ~/aero-tot27#nixos";
         };
-
-        loginExtra = ''
-            if [[ -z $DISPLAY && $(tty) == /dev/tty1 ]]; then
-                exec niri-session
-            fi
-        '';
     };
 
 
@@ -98,5 +88,14 @@
             user.name = "lmToT27";
             user.email = "168084827+lmToT27@user.noreply.github.com";
         };
+    };
+
+    
+    # ============================================
+    # SYMLINK
+    # ============================================ 
+    home.file = {
+        ".config/niri/config.kdl".source = config.lib.file.mkOutOfStoreSymlink 
+          "${config.home.homeDirectory}/aero-tot27/dotfiles/niri/config.kdl";
     };
 }

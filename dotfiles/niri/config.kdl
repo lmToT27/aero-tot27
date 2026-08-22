@@ -1,0 +1,24 @@
+// spawn-at-startup "swaybg" "-i" "path" "-m" "fill"
+spawn-at-startup "waybar"
+
+layout {
+    gaps 8
+    center-focused-column "never"
+}
+
+binds {
+    Mod+T { spawn "kitty"; }
+    Mod+Return { spawn "rofi" "-show" "drun"; }
+
+    Mod+Q { close-window; }
+    Mod+M { quit; }
+
+    Mod+left { focus-column-left; }
+    Mod+right { focus-column-right; }
+
+    Mod+Shift+left { move-column-left; }
+    Mod+Shift+right { move-column-right; }
+
+    Mod+down { focus-workspace-down; }
+    Mod+up { focus-workspace-up; }
+}
