@@ -349,6 +349,7 @@ window-rule {
 binds {
     Mod+T { spawn "kitty"; }
     Mod+W { spawn "brave"; }
+    Mod+E { spawn "thunar"; }
     Mod+Return { spawn "rofi" "-show" "drun"; }
 
     Mod+Q { close-window; }

@@ -24,6 +24,7 @@
         gcc clang-tools nodejs pnpm jdk21 maven
 
         # Applications
+        thunar
         godot_4
         obsidian
         (brave.override {
@@ -97,5 +98,7 @@
     home.file = {
         ".config/niri/config.kdl".source = config.lib.file.mkOutOfStoreSymlink 
           "${config.home.homeDirectory}/aero-tot27/dotfiles/niri/config.kdl";
+        ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink 
+          "${config.home.homeDirectory}/aero-tot27/dotfiles/nvim";
     };
 }
