@@ -55,6 +55,12 @@
             cls = "clear";
             rebuild-os = "sudo nixos-rebuild switch --flake ~/aero-tot27#nixos";
         };
+
+        loginExtra = ''
+            if [[-z $DISPLAY && (tty) == /dev/tty1 ]]; then
+                exec niri-session
+            fi
+        '';
     };
 
 
