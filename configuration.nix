@@ -48,10 +48,16 @@
   time.timeZone = "Asia/Ho_Chi_Minh";
 
   # ==========================================
+  # PROGRAMS
+  # ==========================================
+  programs.zsh.enable = true;
+
+  # ==========================================
   # USER ACCOUNTS
   # ==========================================
   users.users."lmtot27" = {
     isNormalUser = true;
+    shell = pkgs.zsh;
     description = "Le Minh Tuan";
     # 'wheel' group allows the user to execute commands with sudo
     extraGroups = [ "networkmanager" "wheel" ]; 
