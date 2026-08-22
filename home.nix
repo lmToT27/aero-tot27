@@ -11,7 +11,7 @@
     # ============================================ 
     home.packages = with pkgs; [
         # UI & Terminal utils
-        kitty waybar rofi swaybg swaynotificationcenter
+        kitty waybar rofi rofi-emoji swaybg swaynotificationcenter
         grim slurp wl-clipboard wlr-randr
 
         # Python packages
